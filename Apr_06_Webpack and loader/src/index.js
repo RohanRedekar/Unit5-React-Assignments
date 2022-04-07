@@ -1,7 +1,14 @@
 import "./index.css";
-
+import * as url from "./logo.png";
 let title = document.getElementById("title");
 title.textContent = "Todo notes";
+
+let img = document.createElement("img");
+
+img.src = url.default;
+console.log("imported", url);
+
+document.getElementById("img_container").appendChild(img);
 
 function addNote() {
   //   console.log("running");

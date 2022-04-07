@@ -2,6 +2,19 @@
   width: 300px;
   margin: 50px auto;
 }
+
+#container > div {
+  text-align: center;
+}
+
 #title {
   padding: 10px;
+}
+
+#img_container img {
+  width: 50px;
+}
+
+li {
+  margin-left: 20px;
 }
