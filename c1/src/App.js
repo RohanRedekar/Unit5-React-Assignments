@@ -3,22 +3,24 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  const [score, setScore] = useState(0);
-  const [wicket, setWicket] = useState(0);
-  const [over, setOver] = useState(0);
-  const [ball, setBall] = useState(0);
+  const [score, setScore] = useState(76);
+  const [wicket, setWicket] = useState(2);
+  const [over, setOver] = useState(8);
+  const [ball, setBall] = useState(50);
 
   const handleScore = (value) => {
-    setScore(score + value);
+    setScore(score <= 100 ? score + value : score);
   };
 
   const handleWicket = (value) => {
-    setWicket(wicket + value);
+    setWicket(score <= 100 ? wicket + value : wicket);
   };
 
   const handleBall = (value) => {
-    setBall(ball + value);
-    setOver(over + Math.floor(ball/6));
+    if(score <= 100) {
+      setBall(ball + value);
+      setOver(ball % 6 === 0 ? over + value : Math.floor(ball / 6));
+    } 
   };
 
   return (
@@ -29,14 +31,14 @@ function App() {
           Score: <h1 className='scoreCount'>{score}</h1>
         </div>
         <div>
-          Wicket: <h1 className='wicketCount'>{wicket}</h1>
+          Wicket: <h1 className='wicketCount'>{wicket <= 12 ? wicket : 12}</h1>
         </div>
 
         <div>
           Over:{" "}
           <h1 className='overCount'>
             {
-              over
+              over + "." + (ball % 6)
               // Show Over here in the format: "over.ball" eg: 4.5 means 4th over and 5th ball
               // if 1 more ball is thrown then over is now 5.0
               // you have to write logic to form this string from current ball number.
@@ -98,7 +100,7 @@ function App() {
         </button>
       </div>
 
-      {/* If score reaches greater than 100, show text "India Won" without quotes in h1 tag with class name 'status' */}
+      {<h1>{score > 100 ? "India Won" : ""} </h1>}
     </div>
   );
 }
