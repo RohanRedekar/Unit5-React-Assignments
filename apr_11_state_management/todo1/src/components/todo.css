@@ -1,0 +1,64 @@
+body {
+  background-color: rgb(164, 177, 184);
+  font-family: sans-serif;
+}
+
+input {
+  width: 320px;
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+}
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 25px;
+    line-height: 3;
+}
+
+.inputdiv {
+  width: 400px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin: 20px auto;
+}
+
+button {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  margin-left: 10px;
+  font-size: 40px;
+}
+
+.todosdiv {
+  width: 400px;
+  height: 60px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 30px;
+  margin: 10px auto;
+}
+
+div {
+  margin: 10px;
+}
+
+.colour_effect {
+  background-color: aqua;
+  border: 5px solid green;
+}
+
+.coloured {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 5px solid black;
+}
