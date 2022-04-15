@@ -1,0 +1,82 @@
+body {
+  background-color: rgb(164, 177, 184);
+  font-family: sans-serif;
+}
+
+input {
+  width: 320px;
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+}
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 25px;
+    line-height: 3;
+}
+
+.inputdiv {
+  width: 400px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin: 20px auto;
+}
+
+button {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  margin-left: 10px;
+  font-size: 40px;
+}
+
+.todosdiv {
+  width: 400px;
+  height: 60px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 30px;
+  margin: 10px auto;
+}
+
+.todosdiv > div:first-child {
+    width: 300px;
+    text-align: left;
+}
+
+div {
+  margin: 10px;
+}
+
+.del_logo {
+    width: 30px;
+    margin-top: 5px;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+}
+
+.crossout {
+    text-decoration: line-through;
+}
+
+.completedTodos {
+    width: 200px;
+    height: 40px;
+    border: 1px solid white;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
