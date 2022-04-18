@@ -1,18 +1,34 @@
-export const AddStudent = () => {
+import { useState, useEffect } from "react";
 
-    // axios
-    //   .post("http://localhost:8080/students", {
-    //     firstName: "Fred",
-    //     lastName: "Flintstone",
-    //   })
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+export const AddStudent = () => {
+  const [students, setStudents] = useState([]);
+
+  const handleChange = (e) => {
+    if (e.age > 50 || e.age <= 0) {
+      alert("age should be less than 50 and greater than 0");
+    } else if (e.tenth_score > 100 || e.twelth_score > 100) {
+      alert("marks should be less than 100");
+    } else {
+      setStudents({
+        ...students,
+        [e.target.name]: e.target.value,
+      });
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let res = await fetch("http://localhost:8080/students", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ students }),
+    })
+      .then((res) => res.json())
+      .then((json) => setStudents(json.students));
+  };
+
   return (
-    <form className='addstudent'>
+    <form onSubmit={handleSubmit} className='addstudent'>
       <div>
         Firstname:{" "}
         <input
@@ -20,6 +36,7 @@ export const AddStudent = () => {
           name='first_name'
           className='first_name'
           placeholder='enter first name'
+          onChange={handleChange}
         />
       </div>
       <div>
@@ -30,6 +47,7 @@ export const AddStudent = () => {
           name='last_name'
           className='last_name'
           placeholder='enter last name'
+          onChange={handleChange}
         />
       </div>
       <div>
@@ -40,6 +58,7 @@ export const AddStudent = () => {
           name='email'
           className='email'
           placeholder='enter email'
+          onChange={handleChange}
         />
       </div>
 
@@ -52,6 +71,7 @@ export const AddStudent = () => {
             className='male'
             type='radio'
             value={"male"}
+            onChange={handleChange}
           />{" "}
           Female{" "}
           <input
@@ -59,6 +79,7 @@ export const AddStudent = () => {
             className='female'
             type='radio'
             value={"female"}
+            onChange={handleChange}
           />
         </div>
       </div>
@@ -69,6 +90,7 @@ export const AddStudent = () => {
           name='age'
           className='age'
           placeholder='enter age'
+          onChange={handleChange}
         />
       </div>
       <div>
@@ -78,6 +100,7 @@ export const AddStudent = () => {
           name='tenth_score'
           className='tenth_score'
           placeholder='enter 10th score'
+          onChange={handleChange}
         />{" "}
       </div>
       <div>
@@ -87,6 +110,7 @@ export const AddStudent = () => {
           name='twelth_score'
           className='twelth_score'
           placeholder='enter 12th score'
+          onChange={handleChange}
         />{" "}
       </div>
       <div>
