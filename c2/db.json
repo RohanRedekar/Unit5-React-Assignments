@@ -99,30 +99,6 @@
         "twelth_score": "78"
       },
       "id": 9
-    },
-    {
-      "students": {
-        "first_name": "rohan",
-        "last_name": "redekar",
-        "email": "aw@ewf",
-        "gender": "male",
-        "age": "23",
-        "tenth_score": "57",
-        "twelth_score": "78"
-      },
-      "id": 10
-    },
-    {
-      "students": {
-        "first_name": "rohan",
-        "last_name": "redekar",
-        "email": "aw@ewf",
-        "gender": "male",
-        "age": "23",
-        "tenth_score": "57",
-        "twelth_score": "78"
-      },
-      "id": 11
     }
   ]
 }
