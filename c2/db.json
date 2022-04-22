@@ -99,6 +99,18 @@
         "twelth_score": "78"
       },
       "id": 9
+    },
+    {
+      "students": {
+        "first_name": "rsgh",
+        "last_name": "thetr",
+        "email": "554ys@dr",
+        "gender": "male",
+        "age": "345",
+        "tenth_score": "23",
+        "twelth_score": "78"
+      },
+      "id": 10
     }
   ]
 }

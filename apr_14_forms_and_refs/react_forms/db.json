@@ -1,0 +1,22 @@
+{
+  "employeeData": [
+    {
+      "name": "wes",
+      "age": "34",
+      "address": "xdfgre",
+      "department": "commerce",
+      "salary": "4563",
+      "marital_state": "unmarried",
+      "id": 1
+    },
+    {
+      "name": "gqsh",
+      "age": "34",
+      "address": "fghdj",
+      "department": "arts",
+      "salary": "25325",
+      "marital_state": "married",
+      "id": 2
+    }
+  ]
+}

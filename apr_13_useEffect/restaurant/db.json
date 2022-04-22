@@ -6,7 +6,7 @@
       "url": "https://media.cntraveller.com/photos/611bed56623b149193c8cd63/master/w_1920%2Cc_limit/1-bombay-canteen-indiacnt-jan19-pr.jpg",
       "payment_methods": {
         "card": true,
-        "cash": false,
+        "cash": true,
         "upi": true
       },
       "ratings": 4.3,

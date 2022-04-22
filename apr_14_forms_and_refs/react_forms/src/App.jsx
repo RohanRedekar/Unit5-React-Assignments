@@ -14,6 +14,7 @@ function App() {
     axios
       .get("http://localhost:8080/employeeData")
       .then(function (response) {
+        // console.log(response.data);
         setEmployeeDetails(response.data);
       })
       .catch(function (error) {
@@ -37,15 +38,16 @@ function App() {
         </thead>
         <tbody>
           {employeeDetails.map((e) => {
-            console.log(e);
-            return <tr>
-              <td>{e.name}</td>
-              <td>{e.age}</td>
-              <td>{e.address}</td>
-              <td>{e.department}</td>
-              <td>{e.salary}</td>
-              <td>{e.marital_state}</td>
-            </tr>;
+            return (
+              <tr>
+                <td>{e.name}</td>
+                <td>{e.age}</td>
+                <td>{e.address}</td>
+                <td>{e.department}</td>
+                <td>{e.salary}</td>
+                <td>{e.marital_state}</td>
+              </tr>
+            );
           })}
         </tbody>
       </table>

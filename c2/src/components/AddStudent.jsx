@@ -4,7 +4,7 @@ export const AddStudent = () => {
   const [students, setStudents] = useState([]);
 
   const handleChange = (e) => {
-    if (e.age > 50 || e.age <= 0) {
+    if (Number(e.age) > 50 || Number(e.age) <= 0) {
       alert("age should be less than 50 and greater than 0");
     } else if (e.tenth_score > 100 || e.twelth_score > 100) {
       alert("marks should be less than 100");
