@@ -1,5 +1,5 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
-import { render } from "react-dom";
 import "./restaurantDetails.css";
 
 export const Restaurant = () => {
@@ -9,33 +9,38 @@ export const Restaurant = () => {
     getData();
   }, []);
 
-  const getData = async () => {
-    const data = await fetch("http://localhost:8080/restaurants").then((d) =>
-      d.json()
-    );
-    // setRestaurants(data);
-    setRestaurants(data);
+  function getData() {
+    axios
+      .get("http://localhost:8080/restaurants")
+      .then((d) => setRestaurants(d.data))
+      .catch((err) => console.log(err));
+  }
+
+  const handleFilter = (e) => {
+    switch (e.target.value) {
+      case "1":
+        setRestaurants(data.filter((el) => el.rating >= 1));
+        break;
+      case "2":
+        setRestaurants(data.filter((el) => el.rating >= 2));
+        break;
+      case "3":
+        setRestaurants(data.filter((el) => el.rating >= 3));
+        break;
+      case "4":
+        setRestaurants(data.filter((el) => el.rating >= 4));
+    }
   };
 
-  const handleFilter = () => {
-    console.log("filter");
+  const handleSort = (e) => {
+    if (e.target.value == "HL") {
+      setRestaurants([...restaurants].sort((a, b) => b.ratings - a.ratings));
+    } else if (e.target.value == "LH") {
+      setRestaurants([...restaurants].sort((a, b) => a.ratings - b.ratings));
+    }
   };
 
-  const handleSort = () => {
-    const selected = document.getElementById("sort_select").value;
-    if (selected == "HL") {
-      restaurants.sort(function (a, b) {
-        return parseInt(b.ratings) - parseInt(a.ratings);
-      });
-    }
-    if (selected == "LH") {
-      restaurants.sort(function (a, b) {
-        return Number(a.ratings) - Number(b.ratings);
-      });
-    }
-    // console.log(restaurants);
-    // console.log(selected);
-  };
+
 
   return (
     <div>
@@ -62,24 +67,40 @@ export const Restaurant = () => {
             <h2>{r.name}</h2>
             <p className='gray'>{r.categories.toString()}</p>
             <p className='gray'>cost ₹{r.cost_for_one} for one</p>
-            <p>Accepts online payments only</p>
+            <p>
+              {r.payment_methods.cash
+                ? "Accept cash payments only"
+                : "Accept online payments only"}
+            </p>
             <div className='payment_opt'>
-              <input
-                type='radio'
-                name='payment_method'
-                id='card'
-                value='card'
-              />
-              <label for='cash'>Card</label>
-              <input
-                type='radio'
-                name='payment_method'
-                id='cash'
-                value='cash'
-              />
-              <label for='cash'>Cash</label>
-              <input type='radio' name='payment_method' id='upi' value='upi' />
-              <label for='upi'>UPI</label>
+              {!r.payment_methods.cash && (
+                <input
+                  type='radio'
+                  name='payment_method'
+                  id='card'
+                  value='card'
+                />
+              )}
+              {!r.payment_methods.cash && <label for='card'>Card</label>}
+              {!r.payment_methods.cash && (
+                <input
+                  type='radio'
+                  name='payment_method'
+                  id='upi'
+                  value='upi'
+                />
+              )}
+              {!r.payment_methods.cash && <label for='upi'>UPI</label>}
+
+              {r.payment_methods.cash && (
+                <input
+                  type='radio'
+                  name='payment_method'
+                  id='cash'
+                  value='cash'
+                />
+              )}
+              {r.payment_methods.cash && <label for='cash'>Cash</label>}
             </div>
           </div>
           <div className='feedbacks'>
