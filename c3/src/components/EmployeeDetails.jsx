@@ -1,4 +1,5 @@
 export const EmployeeDetails = () => {
+
   return (
     <div className="user_details">
       <img className="user_image" />
