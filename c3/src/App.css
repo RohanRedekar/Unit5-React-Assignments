@@ -1,0 +1,23 @@
+.container {
+  width: 450px;
+  border: 1px solid black;
+  margin: auto;
+  padding: 20px;
+}
+
+.navbar,
+h3 {
+  text-align: center;
+}
+
+.stats {
+  margin-left: 45%;
+}
+
+.navbar a {
+  padding: 8px;
+  background-color: aquamarine;
+  margin: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+}
