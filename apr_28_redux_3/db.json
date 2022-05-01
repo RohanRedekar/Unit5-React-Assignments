@@ -14,12 +14,12 @@
     },
     {
       "title": "todo 2",
-      "status": false,
+      "status": true,
       "id": 2
     },
     {
       "title": "todo 3",
-      "status": false,
+      "status": true,
       "id": 3
     }
   ],
