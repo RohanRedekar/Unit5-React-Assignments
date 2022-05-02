@@ -5,23 +5,27 @@ import { NewOrder } from "./components/NewOrder";
 import { Orders } from "./components/Orders";
 import { ProtectedRoute } from "./components/ProtextedRoute";
 import { Routes, Route } from "react-router-dom";
-import {Link} from "react-router-dom"
-import "./App.css"
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import "./App.css";
 
 function App() {
+  const { isAuth } = useSelector((state) => state.isAuth);
   return (
     <div className='App'>
       <div>
         <Link className='nav-home' to='/'>
           Home
         </Link>
-        {/* Show either login or logout below */}
-        <Link className='nav-logout' to='/logout'>
-          Logout
-        </Link>
-        <Link className='nav-login' to='/login'>
-          Login
-        </Link>
+        {isAuth ? (
+          <Link className='nav-logout' to='/logout'>
+            Logout
+          </Link>
+        ) : (
+          <Link className='nav-login' to='/login'>
+            Login
+          </Link>
+        )}
       </div>
       <Routes>
         <Route path='/' element={<Home />}></Route>
