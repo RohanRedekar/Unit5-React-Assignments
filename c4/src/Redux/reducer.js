@@ -9,7 +9,7 @@ const init = {
 export const reducer = (store = init, { type, payload }) => {
   switch (type) {
     case USER:
-      return { ...store, isAuth: true, users: payload };
+      return { ...store, isAuth: true };
     default:
       return store;
   }

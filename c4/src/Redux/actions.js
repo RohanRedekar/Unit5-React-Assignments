@@ -2,17 +2,7 @@
 import axios from "axios";
 export const USER = "USER";
 
-// Action Creators
-export const user = (name, pass) => (dispatch) => {
-  axios
-    .get("http://localhost:8080/users", {
-      params: { username: name, password: pass },
-    })
-    .then((x) => dispatch(setUser(x.data)))
-    .catch((err) => console.log(err));
-};
-
-export const setUser = (data) => {
+export const login = (data) => {
   return {
     type: USER,
     payload: data,

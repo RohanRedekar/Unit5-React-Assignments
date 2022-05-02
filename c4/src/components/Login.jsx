@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Navigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { user } from "../Redux/actions";
+import { login } from "../Redux/actions";
 
 export const Login = () => {
   const [users, setUsers] = useState({});
@@ -15,13 +15,22 @@ export const Login = () => {
     });
   };
 
-  const handleSubmit = () => {
-    dispatch(user( users ));
-    auth.role === "admin" ? (
-      <Navigate to='/orders' />
-    ) : (
-      <Navigate to='/neworder' />
-    );
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch("http://localhost:8080/users")
+      .then((response) => response.json())
+      .then((data) => {
+        data.map((e) => {
+          if (e.username == users.name && e.pass == users.password) {
+            dispatch(login({ isAuth: true }));
+            if (e.role === "admin") {
+              <Navigate to='/orders' />;
+            } else {
+              <Navigate to='/neworder' />;
+            }
+          }
+        });
+      });
   };
 
   return (
